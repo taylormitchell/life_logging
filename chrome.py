@@ -67,7 +67,6 @@ if __name__=="__main__":
         ('downloads_slices','download_id'),
         ('segments','id'),
         ('segment_usage','id'),
-        ('typed_url_sync_metadata','storage_key'),
         ('keyword_search_terms','url_id')]
     for table, col_id in table_and_id:
         max_chrome_id = chrome_db.fetchone(f"select max({col_id}) from {table}")[0] or -1
