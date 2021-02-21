@@ -1,0 +1,8 @@
+CREATE TABLE roam (
+    uid             TEXT        PRIMARY KEY,
+    create_time     INTEGER     NOT NULL,
+    edit_time       INTEGER     NOT NULL,
+    create_email    TEXT        NULL,
+    edit_email      TEXT        NOT NULL,
+    string          TEXT        NULL
+);
