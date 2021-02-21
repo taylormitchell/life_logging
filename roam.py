@@ -3,11 +3,11 @@ import logging
 import sqlite3
 import os
 
-MASTER = "master.sqlite"
+MASTER = os.path.expanduser("~/GoogleDrive/logs/master.sqlite")
 ROAM_JSON = os.path.expanduser("~/GitHub/roam_backup/json/second_brain.json")
 ROAM_TABLE = "roam"
 SCHEMA = f"""
-CREATE TABLE {ROAM_TABLE} (
+CREATE TABLE IF NOT EXISTS {ROAM_TABLE} (
     uid             TEXT        PRIMARY KEY,
     create_time     INTEGER,
     edit_time       INTEGER,
@@ -69,11 +69,5 @@ def update_table():
     logging.info("Roam successfully synced")
 
 if __name__=="__main__":
-    import sys, traceback, pdb
-    try:
-        update_table()
-    except:
-        extype, value, tb = sys.exc_info()
-        traceback.print_exc()
-        pdb.post_mortem(tb)
-        
+    create_table()
+    update_table()
